@@ -8,7 +8,6 @@ import os
 import credentials
 
 
-
 def connect(username, created_at, tweet, place):
 	"""
 	connect to MySQL database and insert twitter data
@@ -41,10 +40,8 @@ def connect(username, created_at, tweet, place):
 # Tweepy class to access Twitter API
 class Streamlistener(tweepy.StreamListener):
 
-
 	def on_connect(self):
 		print("You are connected to the Twitter API")
-
 
 	def on_error(self):
 		if status_code != 200:
@@ -53,8 +50,7 @@ class Streamlistener(tweepy.StreamListener):
 			return False
 
 	"""
-	This method reads in tweet data as Json
-	and extracts the data we want.
+	This method reads in tweet data as JSON
 	"""
 	def on_data(self,data):
 
@@ -67,7 +63,6 @@ class Streamlistener(tweepy.StreamListener):
 				created_at = parser.parse(raw_data['created_at'])
 				tweet = raw_data['text']
 
-
 				if raw_data['place'] is not None:
 					place = raw_data['place']['country']
 					print(place)
@@ -75,9 +70,7 @@ class Streamlistener(tweepy.StreamListener):
 					place = None
 
 
-
-
-				#insert data just collected into MySQL database
+				# insert data collected into MySQL database
 				connect(username, created_at, tweet, place)
 				print("Tweet colleted at: {} ".format(str(created_at)))
 		except Error as e:
@@ -87,7 +80,7 @@ class Streamlistener(tweepy.StreamListener):
 if __name__== '__main__':
 
 
-	# authentification so we can access twitter
+	# authentificate to access twitter API
 	auth = tweepy.OAuthHandler(credentials.API_KEY, credentials.API_SECRET_KEY)
 	auth.set_access_token(credentials.ACCESS_TOKEN, credentials.ACCESS_TOKEN_SECRET)
 	api =tweepy.API(auth, wait_on_rate_limit=True)
@@ -96,6 +89,7 @@ if __name__== '__main__':
 	listener = Streamlistener(api = api)
 	stream = tweepy.Stream(auth, listener = listener)
 
+	# track words
 	track = ['#coronavirus', '#covid19', "#covid"]
-	# choose what we want to filter by
+
 	stream.filter(track = track, languages = ['en'])
