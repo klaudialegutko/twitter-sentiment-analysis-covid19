@@ -141,7 +141,6 @@ def update_graph_live(n):
       "created_at":"Time in UTC" })
     time_series = result["Time in UTC"][result['polarity']==0].reset_index(drop=True)
 
-
 #Create Scatter
     children = [
             html.Div([
@@ -207,7 +206,6 @@ def update_graph_live(n):
             [Input('interval-component-slow', 'n_intervals')])
 def update_graph_bottom_live(n):
 
-
     #Connecting to database
     mydb = mysql.connector.connect(
     host="localhost",
@@ -267,9 +265,6 @@ def update_graph_bottom_live(n):
       "created_at":"Time in UTC" })
     time_series = result["Time in UTC"][result['polarity']==0].reset_index(drop=True)
 
-
-
-
     children = [
                 html.Div([
                     dcc.Graph(
@@ -317,11 +312,7 @@ def update_graph_bottom_live(n):
                 ], style={'display': 'inline-block', 'width': '49%'})
             ]
 
-
     return children
-
-
-
 
 
 if __name__ == '__main__':
