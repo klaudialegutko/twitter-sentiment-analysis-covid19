@@ -11,7 +11,7 @@ database='######', user='root', password = '######', charset = 'utf8')
 3. Next is sentiment analysis and its results. For sentiment analysis I used TextBlob, displayed it with Dash and deployed using Flask. Same as previously, after installing all the dependencies, change mySQL connection info in app.py to your own, and run the script. 
 4. Type localhost in browser and real-time sentiment analysis should be displayed. 
 
-### There are 3 dashboards displayed:
+### Dashboard includes:
 - sentiment analysis graph.
 - most common words bar chart.
 - geographical distribution of where tweets are coming from.
