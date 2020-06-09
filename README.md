@@ -8,7 +8,8 @@ con = mysql.connector.connect(host = 'localhost',
 database='######', user='root', password = '######', charset = 'utf8') 
  ```
 
-3. Next is sentiment analysis and its results. For sentiment analysis I used TextBlob, displayed it with Dash and deployed using Flask. Same as previously, after installing all the dependencies, change mySQL connection info in app.py to your own and run the script. Type localhost in browser and real-time sentiment analysis should be displayed. 
+3. Next is sentiment analysis and its results. For sentiment analysis I used TextBlob, displayed it with Dash and deployed using Flask. Same as previously, after installing all the dependencies, change mySQL connection info in app.py to your own, and run the script. 
+4. Type localhost in browser and real-time sentiment analysis should be displayed. 
 
 ### There are 3 dashboards displayed:
 - sentiment analysis graph.
